@@ -1,0 +1,11 @@
+venv
+data
+data.zip
+np_data
+np_data.zip
+csv_data
+csv_data.zip
+processed_data
+processed_data.zip
+__pycache__
+*.pkl
