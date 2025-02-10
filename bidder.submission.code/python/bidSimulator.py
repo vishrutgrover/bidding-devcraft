@@ -42,6 +42,7 @@ class bidSimulator:
         bidRequest.setAdvertiserId(sample['AdvertiserID'].tolist())
         bidRequest.setUserTags(sample['UserProfileTags'])
     
+    @profile
     def simulate(self):
         sample = self._get_random_sample()
         bidRequest = BidRequest()
@@ -58,7 +59,7 @@ class bidSimulator:
 
 if __name__ == '__main__':
     simulator = bidSimulator()
-    for i in range(1):
+    for i in range(10):
         print("Bid Price:", simulator.simulate())
         print("-"*15)
         print()

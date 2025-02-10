@@ -4,14 +4,17 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 from functools import lru_cache
+import lightgbm as lgb
 
 class Bidder():
     def __init__(self, bidRatio=1.05, ctrThreshold=0.00045):
         self.bidRatio = bidRatio
         self.ctrThreshold = ctrThreshold
-        self.classification_model = joblib.load('lightgbm_classification.pkl')
+        # self.classification_model = joblib.load('lightgbm_classification.pkl')
+        self.classification_model = lgb.Booster(model_file='lightgbm_classification.txt')
         print('Loaded classification model')
-        self.regression_model = joblib.load('lightgbm_regressor.pkl')
+        # self.regression_model = joblib.load('lightgbm_regressor.pkl')
+        self.regression_model = lgb.Booster(model_file='lightgbm_regressor.txt')
         print('Loaded regression model')
 
         weights = pd.read_csv('region_city_weights.csv')
@@ -58,7 +61,7 @@ class Bidder():
 
         return features
 
-    @profile
+    # @profile
     def getBidPrice(self, bidRequest: BidRequest) -> int:
         features = self.getFeatures(bidRequest)
 
