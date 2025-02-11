@@ -10,10 +10,10 @@ class Bidder():
     def __init__(self, bidRatio=1.05, ctrThreshold=0.00045):
         self.bidRatio = bidRatio
         self.ctrThreshold = ctrThreshold
-        # self.classification_model = joblib.load('lightgbm_classification.pkl')
+
         self.classification_model = lgb.Booster(model_file='lightgbm_classification.txt')
         print('Loaded classification model')
-        # self.regression_model = joblib.load('lightgbm_regressor.pkl')
+        
         self.regression_model = lgb.Booster(model_file='lightgbm_regressor.txt')
         print('Loaded regression model')
 
@@ -60,22 +60,3 @@ class Bidder():
         ], dtype=np.float32)  # Using float32 to reduce memory
 
         return features
-
-    # @profile
-    def getBidPrice(self, bidRequest: BidRequest) -> int:
-        features = self.getFeatures(bidRequest)
-
-        # with ThreadPoolExecutor(max_workers=2) as executor:
-        #     ctr = executor.submit(self.predictCTR, [features])
-        #     price = executor.submit(self.predictBidPrice, [features])
-
-        #     shouldClick = ctr.result()
-        #     bidPrice = price.result()
-
-        shouldClick = self.predictCTR([features])[0]
-        bidPrice = self.predictBidPrice([features])[0]
-
-        if shouldClick > self.ctrThreshold:
-            return round(bidPrice * self.bidRatio, 2)
-        else:
-            return -1

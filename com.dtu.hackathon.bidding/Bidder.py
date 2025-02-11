@@ -1,5 +1,4 @@
 from BidRequest import BidRequest
-import joblib
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np
@@ -60,22 +59,3 @@ class Bidder():
         ], dtype=np.float32)  # Using float32 to reduce memory
 
         return features
-
-    # @profile
-    def getBidPrice(self, bidRequest: BidRequest) -> int:
-        features = self.getFeatures(bidRequest)
-
-        # with ThreadPoolExecutor(max_workers=2) as executor:
-        #     ctr = executor.submit(self.predictCTR, [features])
-        #     price = executor.submit(self.predictBidPrice, [features])
-
-        #     shouldClick = ctr.result()
-        #     bidPrice = price.result()
-
-        shouldClick = self.predictCTR([features])[0]
-        bidPrice = self.predictBidPrice([features])[0]
-
-        if shouldClick > self.ctrThreshold:
-            return round(bidPrice * self.bidRatio, 2)
-        else:
-            return -1
