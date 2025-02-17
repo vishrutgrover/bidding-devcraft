@@ -105,7 +105,7 @@ python Bid.py
 - **Team Members:**
   - Hemang Jain, DTU CSE'27
   - Sanchali Thareja, DTU CSE'27
-  - Vansh Sachdeva, DTU ME'27
+  - Vishrut Grover, DTU ME'27
   - Vansh Sachdeva, DTU CSE'27
 
 ---
