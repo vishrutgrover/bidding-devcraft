@@ -18,9 +18,6 @@ Real-Time Bidding (RTB) is transforming digital advertising by enabling advertis
   - [Bidding Strategy & Model Selection](#bidding-strategy-&-model-selection)
   - [Final Bidding Decision](#final-bidding-decision)
   - [Evaluation Strategy](#evaluation-strategy)
-- [Final Prediction Pipeline](#final-prediction-pipeline)
-- [Our Validation Results](#our-validation-results)
-
 ---
 
 ## Project Overview
@@ -180,15 +177,3 @@ To measure the effectiveness of our approach, we conduct **real-time simulations
   - **Execution Time ≤ 5ms**, **Memory Usage ≤ 512MB**
 
 This structured approach ensures an **efficient and scalable** bidding strategy while optimizing costs and maximizing conversions.
-
----
-
-## Final Prediction Pipeline
-- First, we receive the complete bid request.
-- 
-
-## Our Validation Results
-- **Clicks Achieved:** 
-- **Conversions Achieved:** 
-- **Overall Score:** 
-- **Budget Utilization:** 
